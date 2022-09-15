@@ -57,7 +57,7 @@ These are:
 - 1_scripts
 	-> contains the main scripts related to the "Orientation_Thickness_Extraction_Geol_Maps" routine
 - 1_used_functions
-	-> contains all functions that are per se independent from the "Orientation_Thickness_Extraction_Geol_Maps" or from third party developers (i.e. Fernandez, 2005, Rauch et al., 2019)
+	-> contains all functions that are per se independent from the "Orientation_Thickness_Extraction_Geol_Maps" or function from third party developers (i.e. Fernandez, 2005, Rauch et al., 2019)
 - 2_output_mapsheet
 	-> this folder will contain the model ouptut text files and figures
 
@@ -70,14 +70,62 @@ In script B_ORIENTATION_THICKNESS_EXTRACTION
 
 In script C_FILTERING
 -> the orientation and thickness data are classified and filtered by using the reliability threshold values specified in the file "ParameterSpace.xls"
+   Make sure the "Orientation_Thickness_Extraction_Geol_Maps" routine with all its subfolders is registered as a Matlab search path.
 
-	-> figure(1): map in 3d with traces and trace numbers
-	-> figure(2): map in 3d with classified traces and chord plane bars
-	-> figure(3): signals of alpha, beta and dist of a specific trace
-	-> figure(4): chords and chord plane evolution of a specific trace in a stereonet
-	-> figure(5): signal height diagram
+OUTPUT FILES:
 
-    Make sure the "Orientation_Thickness_Extraction_Geol_Maps" routine with all its subfolders is registered as a Matlab search path.
+The routine produces 4 output textfiles and optionally 10 figures.
+The output text files are optimised to facilitate the data export to standard GIS applications.
+The figures are optimised to enable a rapid output validation and to allow editability in AdobeIllustrator.
+All output files and their structure are listed below:
+
+1. output_orientation_unfiltered.txt: main output file generated at the end of B_ORIENTATION_THICKNESS_EXTRACTION 
+	-> column 1: 'X', x coordinate of orientation information = center coordinate of moving window
+	-> column 2: 'Y', y coordinate of orientation information = center coordinate of moving window
+	-> column 3: 'Z', z coordinate of orientation information = center coordinate of moving window
+	-> column 4: 'DIR_X', x component of unit normal vector DIR to the planar fit at this locality (Fernandez, 2005) 
+	-> column 5: 'DIR_Y', y component of unit normal vector DIR to the planar fit at this locality (Fernandez, 2005)
+	-> column 6: 'DIR_Z', z component of unit normal vector DIR to the planar fit at this locality (Fernandez, 2005)
+	-> column 7: 'DIP_DIRECTION', dip direction calculated by the moment of inertia function in moving window mode
+	-> column 8: 'DIP', dip calculated by the moment of inertia function in moving window mode
+	-> column 9: 'M', co-planarity of nodes, reliability assessment of best-fit plane after Fernandez (2005)'
+	-> column 10: 'K', co-linearity of nodes, reliability assessment of best-fit plane after Fernandez (2005)'
+	-> column 11: 'T', index number of analysed trace
+	-> column 12: 'n(T)', length of the analysed trace (number of points considered, not in meters)
+
+2. output_thickness_unfiltered.txt: main output file generated at the end of B_ORIENTATION_THICKNESS_EXTRACTION
+	-> column 1: 'X', x coordinate of central thickness point = center of thickness vector D or D'
+	-> column 2: 'Y', y coordinate of central thickness point = center of thickness vector D or D'
+	-> column 3: 'Z', z coordinate of central thickness point = center of thickness vector D or D'
+	-> column 4: 'thickness', estimated layer thickness, length of vector D, calculated from base trace
+	-> column 5: 'M', co-planarity of nodes, reliability assessment of best-fit plane after Fernandez (2005)'
+	-> column 6: 'K', co-linearity of nodes, reliability assessment of best-fit plane after Fernandez (2005)'
+	-> column 7: 'thicknessDiff', rel. difference "delta" between D and D'
+	-> column 8: 'AngularDiffN', angular difference "alpha" between vectors D and D'
+	-> column 9: 'distance_PQ', shortest distance between nearest neighbor points P and Q on top and base trace
+	-> column 10: 'T1', index number of first trace to be analysed
+	-> column 11: 'n(T1)', length of the trace (number of points considered, not in meters)
+	-> column 12: 'T2', index number of nearest neighbor trace
+	-> column 13: 'GeolCode', geol. unit at the center position of vectors D or D' (see also X,Y)
+
+3. output_orientation_filtered.txt: filtered output file generated at the end of C_FILTERING
+	-> selection of reliability assessed and filtered orientation outputs, same structure as output_orientation_unfiltered.txt
+
+4. output_thickness_filtered.txt: filtered output file generated at the end of C_FILTERING
+	-> selection of reliability assessed and filtered thickness outputs, same structure as output_thickness_unfiltered.txt
+
+FIGURES
+	-> Figure 1:     All in one figure including DEM (hillshade), geological map, extracted orientation data and reliability assessed thickness point data
+	-> Figure 2:     3D Plot showing extracted top and base horizons
+	-> Figure 3:     Background map, DEM, geological map with target unit (Figure 3 is a raster format output, even when exported as .svg)
+	-> Figure 4:     Model output, layer orientation and thickness estimates for target layer (Figure 4 does not contain any raster data, all vectors can be edited, very useful for production of final figures, uncomment export_fig function to enhance editability in Ai) -> combine Figures 3 and 4!
+	-> Figure 5:     Figure including the orientation reliability indicator M
+	-> Figure 6:     Figure including the orientation reliability indicator K
+	-> Figure 7:     Figure including the thickness reliability indicator delta
+	-> Figure 8:     Figure including the thickness reliability indicator alpha
+	-> Figure 9:     Figure including the thickness reliability indicator distPQ
+	-> Figure 10:    Histogram plot of thickness values a long a given target unit segment
+
 
 EXAMPLE:
 
