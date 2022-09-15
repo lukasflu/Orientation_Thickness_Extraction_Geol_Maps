@@ -29,6 +29,7 @@ REQUIRED INPUT DATA FOR ORIENTATION AND THICKNESS EXTRACTION:
                                           This list is necessary for the top base definition, the example table was received on the 2022-06-14 by A. Morard (swisstopo)
 
 SUPPLEMENTARY INPUT DATA FOR OUTPUT VALIDATION AND VISUALISATION (USED IN THE EXAMPLE DATA SET)
+
 5. HSt_relevant_units_20220617.xls:       Table containing the GeolCodes of the potentially hard rock bearing lithostratigraphic units and eventually mapped sub-units
                                           This is particularly helpful if a large number of lithostratigraphic units have to be analysed
 6. ParameterSpace.xls:                    Table containing the optimal filtering parameter set for each analysed map sheet
@@ -45,27 +46,30 @@ All input data have to be saved in the current Matlab path or have to be registe
 ***
 ORGANISATION OF THE TOOLBOX:
 
-The TIE-toolbox contains four folders and one master running script.
+The "Orientation_Thickness_Extraction_Geol_Maps" routine contains five folders.
 
-The folders are:
+These are:
 
-- LOADfunctions
-	-> contains all functions that are needed to load the data and put the data in 
-	   the TIE compatible format.
-- TRACEfuntions
-	-> contains all functions that are related to traces (and thus to the TIE)
-	   to add/analyse information in a structural array
-- GENERALfunctions
-	-> contains all functions that are per se independent from trace or mapping
-	   information -> mostly linear algebra functions
-- TRACEvisualize
-	-> contains all functions that are needed to visualise trace data
+- 0_input_global
+	-> contains all input data that are not specific to a map sheet (i.e. stratigraphic list/hierarchy of mapped bedrock units)
+- 0_input_mapsheet
+	-> contains all input data that are specific to a given map sheet / area (i.e., bedrock, tectonic lines input, DEM)
+- 1_scripts
+	-> contains the main scripts related to the "Orientation_Thickness_Extraction_Geol_Maps" routine
+- 1_used_functions
+	-> contains all functions that are per se independent from the "Orientation_Thickness_Extraction_Geol_Maps" or from third party developers (i.e. Fernandez, 2005, Rauch et al., 2019)
+- 2_output_mapsheet
+	-> this folder will contain the model ouptut text files and figures
 
-The script master.m allows to:
+In script A_INPUT_TIE.m:
 
--> define the personal input data
--> load the data and perform the TIE
--> visualize results
+-> all manual inputs and the input data are defined, loaded and the top and base traces are extracted
+
+In script B_ORIENTATION_THICKNESS_EXTRACTION
+-> the orientation and thickness data are extracted and stored with associated reliability indicators
+
+In script C_FILTERING
+-> the orientation and thickness data are classified and filtered by using the reliability threshold values specified in the file "ParameterSpace.xls"
 
 	-> figure(1): map in 3d with traces and trace numbers
 	-> figure(2): map in 3d with classified traces and chord plane bars
@@ -73,15 +77,14 @@ The script master.m allows to:
 	-> figure(4): chords and chord plane evolution of a specific trace in a stereonet
 	-> figure(5): signal height diagram
 
-    Make sure the TIE-toolbox with all its subfolders is registered as a Matlab search path.
+    Make sure the "Orientation_Thickness_Extraction_Geol_Maps" routine with all its subfolders is registered as a Matlab search path.
 
 EXAMPLE:
 
 In the "Example Data" folder we propose a practical example in order to get used to TIE.
 
-The data are presented and discussed in detail in Rauch et al. (2019): https://doi.org/10.1016/j.jsg.2019.06.007
-
-The example data are already set as initial data set of the TIE-toolbox. Run the master in order to see the TIE results. If you wish to run your own data, just change the INPUT data in the master file.
+The data are presented and discussed in detail in Nibourel et al. (submitted): *add doi here*
+The example data are already set as initial data set in the script "A_INPUT_TIE". If you wish to run your own data, change the INPUT data in "A_INPUT_TIE".
 
 ADVICE:
 
