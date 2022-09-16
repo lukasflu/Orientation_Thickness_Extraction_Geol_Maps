@@ -139,9 +139,14 @@ The data are presented and discussed in detail in Nibourel et al. (submitted): *
 
 ***
 REFERENCES:
+
 Rauch et al., 2019. Trace Information Extraction (TIE): A new approach to extract structural information from traces in geological maps. Journal of Structural Geology, 125, 268-300, doi: 10.1016/j.jsg.2019.06.007
  
 Fernandez, 2005. Obtaining a best fitting plane through 3D georeferenced data. Journal of Structural Geology, 125, 268-300, doi: 10.1016/j.jsg.2004.12.004
+
+The following example data sets can be downloaded at www.swisstopo.ch:
+	- the 1:25'000 GeoCover geological vector data set of Switzerland, including the bedrock data, the faults and the orientation measurements
+	- the digital elevation model swissALTI3D
 
 ***
 CONTACT:
