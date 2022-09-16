@@ -121,16 +121,16 @@ All output files and their structure are listed below:
 
 FIGURES:
 
-	- Figure 1:     All in one figure including DEM (hillshade), geological map, extracted orientation data and reliability assessed thickness point data
-	- Figure 2:     3D Plot showing extracted top and base horizons
-	- Figure 3:     Background map, DEM, geological map with target unit (Figure 3 is a raster format output, even when exported as .svg)
-	- Figure 4:     Model output, layer orientation and thickness estimates for target layer (Figure 4 does not contain any raster data, all vectors can be edited, very useful for production of final figures, uncomment export_fig function to enhance editability in Ai) -> combine Figures 3 and 4!
-	- Figure 5:     Figure including the orientation reliability indicator M
-	- Figure 6:     Figure including the orientation reliability indicator K
-	- Figure 7:     Figure including the thickness reliability indicator delta
-	- Figure 8:     Figure including the thickness reliability indicator alpha
-	- Figure 9:     Figure including the thickness reliability indicator distPQ
-	- Figure 10:    Histogram plot of thickness values a long a given target unit segment
+- Figure 1:     All in one figure including DEM (hillshade), geological map, extracted orientation data and reliability assessed thickness point data
+- Figure 2:     3D Plot showing extracted top and base horizons
+- Figure 3:     Background map, DEM, geological map with target unit (Figure 3 is a raster format output, even when exported as .svg)
+- Figure 4:     Model output, layer orientation and thickness estimates for target layer (Figure 4 does not contain any raster data, all vectors can be edited, very useful for production of final figures, uncomment export_fig function to enhance editability in Ai) -> combine Figures 3 and 4!
+- Figure 5:     Figure including the orientation reliability indicator M
+- Figure 6:     Figure including the orientation reliability indicator K
+- Figure 7:     Figure including the thickness reliability indicator delta
+- Figure 8:     Figure including the thickness reliability indicator alpha
+- Figure 9:     Figure including the thickness reliability indicator distPQ
+- Figure 10:    Histogram plot of thickness values a long a given target unit segment
 
 ***
 EXAMPLE:
