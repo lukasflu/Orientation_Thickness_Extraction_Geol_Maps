@@ -60,7 +60,7 @@ The "Orientation_Thickness_Extraction_Geol_Maps" routine contains five folders. 
 - 1_scripts
 	-> contains the main scripts related to the "Orientation_Thickness_Extraction_Geol_Maps" routine
 - 1_used_functions
-	-> contains all functions that are per se independent from the "Orientation_Thickness_Extraction_Geol_Maps" or function from third party developers (i.e. Fernandez, 2005, Rauch et al., 2019)
+	-> contains all functions that are per se independent from the "Orientation_Thickness_Extraction_Geol_Maps" or functions from third party developers (i.e. Fernandez, 2005, Rauch et al., 2019)
 - 2_output_mapsheet
 	-> this folder will contain the model ouptut text files and figures
 
