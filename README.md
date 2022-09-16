@@ -47,11 +47,9 @@ SUPPLEMENTARY INPUT DATA FOR OUTPUT VALIDATION AND VISUALISATION (USED IN THE EX
 All input data have to be saved in the current Matlab path or have to be registered in a Matlab search path.
 
 ***
-ORGANISATION OF THE TOOLBOX:
+ORGANISATION OF DOCUMENTS:
 
-The "Orientation_Thickness_Extraction_Geol_Maps" routine contains five folders.
-
-These are:
+The "Orientation_Thickness_Extraction_Geol_Maps" routine contains five folders. These are:
 
 - 0_input_global
 	-> contains all input data that are not specific to a map sheet (i.e. stratigraphic list/hierarchy of mapped bedrock units)
@@ -87,7 +85,6 @@ All output files and their structure are listed below:
 1. output_orientation_unfiltered.txt: main output file generated at the end of B_ORIENTATION_THICKNESS_EXTRACTION 
 	- column 1: 'X', x coordinate of orientation information = center coordinate of moving window
 	- column 2: 'Y', y coordinate of orientation information = center coordinate of moving window
-
 	- column 3: 'Z', z coordinate of orientation information = center coordinate of moving window
 	- column 4: 'DIR_X', x component of unit normal vector DIR to the planar fit at this locality (Fernandez, 2005) 
 	- column 5: 'DIR_Y', y component of unit normal vector DIR to the planar fit at this locality (Fernandez, 2005)
