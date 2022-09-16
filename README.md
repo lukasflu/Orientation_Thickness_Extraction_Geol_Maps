@@ -146,8 +146,8 @@ Fernandez, 2005. Obtaining a best fitting plane through 3D georeferenced data. J
 
 The following example data sets are available at www.swisstopo.ch:
 
-- the 1:25'000 GeoCover geological vector data set of Switzerland, including the bedrock data, the faults and the orientation measurements
-- the digital elevation model swissALTI3D
+	- the 1:25'000 GeoCover geological vector data set of Switzerland, including the bedrock data, the faults and the orientation measurements
+	- the digital elevation model swissALTI3D
 
 ***
 CONTACT:
