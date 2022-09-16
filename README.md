@@ -88,64 +88,58 @@ All output files and their structure are listed below:
 	- column 1: 'X', x coordinate of orientation information = center coordinate of moving window
 	- column 2: 'Y', y coordinate of orientation information = center coordinate of moving window
 
-	-> column 3: 'Z', z coordinate of orientation information = center coordinate of moving window
-	-> column 4: 'DIR_X', x component of unit normal vector DIR to the planar fit at this locality (Fernandez, 2005) 
-	-> column 5: 'DIR_Y', y component of unit normal vector DIR to the planar fit at this locality (Fernandez, 2005)
-	-> column 6: 'DIR_Z', z component of unit normal vector DIR to the planar fit at this locality (Fernandez, 2005)
-	-> column 7: 'DIP_DIRECTION', dip direction calculated by the moment of inertia function in moving window mode
-	-> column 8: 'DIP', dip calculated by the moment of inertia function in moving window mode
-	-> column 9: 'M', co-planarity of nodes, reliability assessment of best-fit plane after Fernandez (2005)'
-	-> column 10: 'K', co-linearity of nodes, reliability assessment of best-fit plane after Fernandez (2005)'
-	-> column 11: 'T', index number of analysed trace
-	-> column 12: 'n(T)', length of the analysed trace (number of points considered, not in meters)
+	- column 3: 'Z', z coordinate of orientation information = center coordinate of moving window
+	- column 4: 'DIR_X', x component of unit normal vector DIR to the planar fit at this locality (Fernandez, 2005) 
+	- column 5: 'DIR_Y', y component of unit normal vector DIR to the planar fit at this locality (Fernandez, 2005)
+	- column 6: 'DIR_Z', z component of unit normal vector DIR to the planar fit at this locality (Fernandez, 2005)
+	- column 7: 'DIP_DIRECTION', dip direction calculated by the moment of inertia function in moving window mode
+	- column 8: 'DIP', dip calculated by the moment of inertia function in moving window mode
+	- column 9: 'M', co-planarity of nodes, reliability assessment of best-fit plane after Fernandez (2005)'
+	- column 10: 'K', co-linearity of nodes, reliability assessment of best-fit plane after Fernandez (2005)'
+	- column 11: 'T', index number of analysed trace
+	- column 12: 'n(T)', length of the analysed trace (number of points considered, not in meters)
 
 2. output_thickness_unfiltered.txt: main output file generated at the end of B_ORIENTATION_THICKNESS_EXTRACTION
-	-> column 1: 'X', x coordinate of central thickness point = center of thickness vector D or D'
-	-> column 2: 'Y', y coordinate of central thickness point = center of thickness vector D or D'
-	-> column 3: 'Z', z coordinate of central thickness point = center of thickness vector D or D'
-	-> column 4: 'thickness', estimated layer thickness, length of vector D, calculated from base trace
-	-> column 5: 'M', co-planarity of nodes, reliability assessment of best-fit plane after Fernandez (2005)'
-	-> column 6: 'K', co-linearity of nodes, reliability assessment of best-fit plane after Fernandez (2005)'
-	-> column 7: 'thicknessDiff', rel. difference "delta" between D and D'
-	-> column 8: 'AngularDiffN', angular difference "alpha" between vectors D and D'
-	-> column 9: 'distance_PQ', shortest distance between nearest neighbor points P and Q on top and base trace
-	-> column 10: 'T1', index number of first trace to be analysed
-	-> column 11: 'n(T1)', length of the trace (number of points considered, not in meters)
-	-> column 12: 'T2', index number of nearest neighbor trace
-	-> column 13: 'GeolCode', geol. unit at the center position of vectors D or D' (see also X,Y)
+	- column 1: 'X', x coordinate of central thickness point = center of thickness vector D or D'
+	- column 2: 'Y', y coordinate of central thickness point = center of thickness vector D or D'
+	- column 3: 'Z', z coordinate of central thickness point = center of thickness vector D or D'
+	- column 4: 'thickness', estimated layer thickness, length of vector D, calculated from base trace
+	- column 5: 'M', co-planarity of nodes, reliability assessment of best-fit plane after Fernandez (2005)'
+	- column 6: 'K', co-linearity of nodes, reliability assessment of best-fit plane after Fernandez (2005)'
+	- column 7: 'thicknessDiff', rel. difference "delta" between D and D'
+	- column 8: 'AngularDiffN', angular difference "alpha" between vectors D and D'
+	- column 9: 'distance_PQ', shortest distance between nearest neighbor points P and Q on top and base trace
+	- column 10: 'T1', index number of first trace to be analysed
+	- column 11: 'n(T1)', length of the trace (number of points considered, not in meters)
+	- column 12: 'T2', index number of nearest neighbor trace
+	- column 13: 'GeolCode', geol. unit at the center position of vectors D or D' (see also X,Y)
 
 3. output_orientation_filtered.txt: filtered output file generated at the end of C_FILTERING
-	-> selection of reliability assessed and filtered orientation outputs, same structure as output_orientation_unfiltered.txt
+	- selection of reliability assessed and filtered orientation outputs, same structure as output_orientation_unfiltered.txt
 
 4. output_thickness_filtered.txt: filtered output file generated at the end of C_FILTERING
-	-> selection of reliability assessed and filtered thickness outputs, same structure as output_thickness_unfiltered.txt
+	- selection of reliability assessed and filtered thickness outputs, same structure as output_thickness_unfiltered.txt
 
-FIGURES
-	-> Figure 1:     All in one figure including DEM (hillshade), geological map, extracted orientation data and reliability assessed thickness point data
-	-> Figure 2:     3D Plot showing extracted top and base horizons
-	-> Figure 3:     Background map, DEM, geological map with target unit (Figure 3 is a raster format output, even when exported as .svg)
-	-> Figure 4:     Model output, layer orientation and thickness estimates for target layer (Figure 4 does not contain any raster data, all vectors can be edited, very useful for production of final figures, uncomment export_fig function to enhance editability in Ai) -> combine Figures 3 and 4!
-	-> Figure 5:     Figure including the orientation reliability indicator M
-	-> Figure 6:     Figure including the orientation reliability indicator K
-	-> Figure 7:     Figure including the thickness reliability indicator delta
-	-> Figure 8:     Figure including the thickness reliability indicator alpha
-	-> Figure 9:     Figure including the thickness reliability indicator distPQ
-	-> Figure 10:    Histogram plot of thickness values a long a given target unit segment
+FIGURES:
+	- Figure 1:     All in one figure including DEM (hillshade), geological map, extracted orientation data and reliability assessed thickness point data
+	- Figure 2:     3D Plot showing extracted top and base horizons
+	- Figure 3:     Background map, DEM, geological map with target unit (Figure 3 is a raster format output, even when exported as .svg)
+	- Figure 4:     Model output, layer orientation and thickness estimates for target layer (Figure 4 does not contain any raster data, all vectors can be edited, very useful for production of final figures, uncomment export_fig function to enhance editability in Ai) -> combine Figures 3 and 4!
+	- Figure 5:     Figure including the orientation reliability indicator M
+	- Figure 6:     Figure including the orientation reliability indicator K
+	- Figure 7:     Figure including the thickness reliability indicator delta
+	- Figure 8:     Figure including the thickness reliability indicator alpha
+	- Figure 9:     Figure including the thickness reliability indicator distPQ
+	- Figure 10:    Histogram plot of thickness values a long a given target unit segment
 
-
+***
 EXAMPLE:
 
-In the "Example Data" folder we propose a practical example in order to get used to TIE.
-
-The data are presented and discussed in detail in Nibourel et al. (submitted): *add doi here*
 The example data are already set as initial data set in the script "A_INPUT_TIE". If you wish to run your own data, change the INPUT data in "A_INPUT_TIE".
 
-ADVICE:
+The data are presented and discussed in detail in Nibourel et al. (submitted): *add doi here*
 
-    Do not analyse a great zone at once. Firstly, the rasterizing function is not set up for a big amount of data and thus might be time consuming. In addition, the TIE is conceived for the detailed understanding of each individual trace. A large view of hundreds of traces is usually confusing and not helpful. We suggest to subdivide a bigger zone in smaller subzones containing 10 to 30 traces in a trace set.
-    Save the loaded data (including the TRACE and FAULT structures) in a mat-file after the first run in order to avoid potentially time-consuming data-loading. The loading section in the master script can thereafter be skipped or commented.
-    The TIE algorithm itself does not require the Mapping Toolbox. So if you do not have the Mapping Toolbox and do not want to purchase it, but would like to try out the TIE method on your data, there is the possibility to find somebody who has it, load the data and save them in a mat-file. If this somebody does not exist around you, contact me.
-
+***
 CONTACT:
 
 Lukas Nibourel // ETH Zurich // lukas.nibourel@erdw.ethz.ch
