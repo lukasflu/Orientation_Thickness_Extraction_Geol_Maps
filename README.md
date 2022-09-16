@@ -67,16 +67,12 @@ These are:
 ***
 PROCEDURE
 
-1. run script A_INPUT_TIE.m:
-
--> all manual inputs and the input data are defined, loaded and the top and base traces are extracted
+1. run script A_INPUT_TIE.m: -> all manual inputs and the input data are defined, loaded and the top and base traces are extracted
 
 2. run script B_ORIENTATION_THICKNESS_EXTRACTION.m:
-
 -> the orientation and thickness data are extracted and stored with associated reliability indicators
 
 3. run script C_FILTERING.m
-
 -> the orientation and thickness data are classified and filtered by using the reliability threshold values specified in the file "ParameterSpace.xls"
    Make sure the "Orientation_Thickness_Extraction_Geol_Maps" routine with all its subfolders is registered as a Matlab search path.
 
