@@ -33,7 +33,7 @@ REQUIRED INPUT DATA FOR ORIENTATION AND THICKNESS EXTRACTION:
 
 SUPPLEMENTARY INPUT DATA FOR OUTPUT VALIDATION AND VISUALISATION:
 
-These input data are not required for the routine to run, but are used to in the example data set to enable fast processing of multiple map sheets and to visualise and validate the model output.
+These input data are not required for the routine to run, but are used in the example data set to visualise and validate the model output. Aditionally, these data sets allow fast processing of multiple map sheets.
 
 5. HSt_relevant_units_20220617.xls:       Table containing the GeolCodes of the potentially hard rock bearing lithostratigraphic units and eventually mapped sub-units
                                           This is particularly helpful if a large number of lithostratigraphic units have to be analysed
