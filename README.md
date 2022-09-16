@@ -120,6 +120,7 @@ All output files and their structure are listed below:
 	- selection of reliability assessed and filtered thickness outputs, same structure as output_thickness_unfiltered.txt
 
 FIGURES:
+
 	- Figure 1:     All in one figure including DEM (hillshade), geological map, extracted orientation data and reliability assessed thickness point data
 	- Figure 2:     3D Plot showing extracted top and base horizons
 	- Figure 3:     Background map, DEM, geological map with target unit (Figure 3 is a raster format output, even when exported as .svg)
