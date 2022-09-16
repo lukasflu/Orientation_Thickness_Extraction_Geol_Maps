@@ -31,7 +31,9 @@ REQUIRED INPUT DATA FOR ORIENTATION AND THICKNESS EXTRACTION:
                                           These units have to be ordered after stratigraphic age and hierarchy (i.e. Group, Sub-group, Formation, Member)
                                           This list is necessary for the top base definition, the example table was received on the 2022-06-14 by A. Morard (swisstopo)
 
-SUPPLEMENTARY INPUT DATA FOR OUTPUT VALIDATION AND VISUALISATION (USED IN THE EXAMPLE DATA SET)
+SUPPLEMENTARY INPUT DATA FOR OUTPUT VALIDATION AND VISUALISATION:
+
+These input data are not required for the routine to run, but are used to in the example data set to enable fast processing of multiple map sheets and to visualise and validate the model output.
 
 5. HSt_relevant_units_20220617.xls:       Table containing the GeolCodes of the potentially hard rock bearing lithostratigraphic units and eventually mapped sub-units
                                           This is particularly helpful if a large number of lithostratigraphic units have to be analysed
@@ -63,9 +65,9 @@ The "Orientation_Thickness_Extraction_Geol_Maps" routine contains five folders. 
 	-> this folder will contain the model ouptut text files and figures
 
 ***
-PROCEDURE
+PROCEDURE:
 
-1. run script A_INPUT_TIE.m: -> all manual inputs and the input data are defined, loaded and the top and base traces are extracted
+1. run script A_INPUT_TIE.m: -> define pathes to input data and output folder, all manual inputs and the input data are defined, loaded and the top and base traces are extracted
 
 2. run script B_ORIENTATION_THICKNESS_EXTRACTION.m:
 -> the orientation and thickness data are extracted and stored with associated reliability indicators
