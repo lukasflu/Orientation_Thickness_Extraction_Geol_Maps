@@ -1,20 +1,23 @@
 # Orientation_Thickness_Extraction_Geol_Maps
 Routine to automatically extract the orientation and stratigraphic thickness of a given geological bedrock unit from geological maps
 
+***
 PURPOSE:
 
 The "Orientation_Thickness_Extraction_Geol_Maps" routine is designed to automatically extract quantitative geometric informations from geological maps. The routine (A) first automatically extracts the top and base contacts of a specified lithostratigraphic unit. (B) A second script extracts the orientation along these contacts and estimates the stratigraphic thickness of the target unit at a given locality based on the automatically extracted orientation information. (C) Different numeric parameters are proposed to evaluate the reliability of the extracted orientation and thickness model output. An example input data set was added to the repository and helps to test and get used to the presented toolbox. For more information, see Nibourel et al. (submitted): *add doi here*
 
+***
 TECHNICAL REQUIREMENTS:
 
 The routine is written and tested in Matlab (version 2021b). Therefore, Matlab must be installed to run the scripts.
 The routine uses some third party functions from the TIE toolbox (Rauch et al. 2019) and the moment of inertia function (Fernandez, 2005).
 References are given below. All necessary new and existing scripts are stored in the subfolder "1_used_functions" of this data repository.
 
+***
 INPUT DATA AND REQUIREMENTS:
 
-The geological map vector data must be loaded in a projected coordinate system (typically a national projected system, CH1903+ / LV95, epsg: 2056 in the example data set), where the units are expressed in meters.
-All input data must be loaded with the same projected coordinate system. It is recommended to work on one map sheet at once. This avoids mapsheet boundary effects and saves calculation time. Additionally, the filtering parameters might vary from map sheet to map sheet.
+The geological map vector data must be loaded in a projected coordinate system (typically a national projected system, CH1903+ / LV95, epsg: 2056 in the example data set), where the coordinates are expressed in meters.
+All input data must be loaded with the same projected coordinate system. It is recommended to work on one map sheet at once. This avoids mapsheet boundary effects and saves calculation time. Additionally, the optimal filtering parameters might vary from map sheet to map sheet.
 In the following, all input data are listed, important requirements of the input data specified. The file names reflect the input data of our test data set (see Nibourel, et al., submitted)
 
 REQUIRED INPUT DATA FOR ORIENTATION AND THICKNESS EXTRACTION:
@@ -61,6 +64,9 @@ These are:
 - 2_output_mapsheet
 	-> this folder will contain the model ouptut text files and figures
 
+***
+PROCEDURE
+
 In script A_INPUT_TIE.m:
 
 -> all manual inputs and the input data are defined, loaded and the top and base traces are extracted
@@ -72,6 +78,7 @@ In script C_FILTERING
 -> the orientation and thickness data are classified and filtered by using the reliability threshold values specified in the file "ParameterSpace.xls"
    Make sure the "Orientation_Thickness_Extraction_Geol_Maps" routine with all its subfolders is registered as a Matlab search path.
 
+***
 OUTPUT FILES:
 
 The routine produces 4 output textfiles and optionally 10 figures.
