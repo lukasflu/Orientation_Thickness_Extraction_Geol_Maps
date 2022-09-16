@@ -85,8 +85,9 @@ The figures are optimised to enable a rapid output validation and to allow edita
 All output files and their structure are listed below:
 
 1. output_orientation_unfiltered.txt: main output file generated at the end of B_ORIENTATION_THICKNESS_EXTRACTION 
-	-> column 1: 'X', x coordinate of orientation information = center coordinate of moving window
-	-> column 2: 'Y', y coordinate of orientation information = center coordinate of moving window
+	- column 1: 'X', x coordinate of orientation information = center coordinate of moving window
+	- column 2: 'Y', y coordinate of orientation information = center coordinate of moving window
+
 	-> column 3: 'Z', z coordinate of orientation information = center coordinate of moving window
 	-> column 4: 'DIR_X', x component of unit normal vector DIR to the planar fit at this locality (Fernandez, 2005) 
 	-> column 5: 'DIR_Y', y component of unit normal vector DIR to the planar fit at this locality (Fernandez, 2005)
