@@ -139,6 +139,12 @@ The example data are already set as initial data set in the script "A_INPUT_TIE"
 The data are presented and discussed in detail in Nibourel et al. (submitted): *add doi here*
 
 ***
+CITATION:
+A detailed documentation of the approach can be found in Nibourel et al. (submitted), see below:
+Nibourel et al., (submitted). Automated extraction of orientation and stratigraphic thickness from geological maps. Journal of Structural Geology, ???, ???-???, doi: ???
+Please, cite this paper if you apply the "Orientation_Thickness_Extraction_Geol_Maps". 
+
+***
 REFERENCES:
 
 Rauch et al., 2019. Trace Information Extraction (TIE): A new approach to extract structural information from traces in geological maps. Journal of Structural Geology, 125, 268-300, doi: 10.1016/j.jsg.2019.06.007
