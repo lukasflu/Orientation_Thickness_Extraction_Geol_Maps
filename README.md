@@ -117,7 +117,7 @@ of the orientation information, reference appended below
 `4_other_existing_matlab_functions`
 
 This folder contains other not built-in Matlab functions
-* turbo.m includes a colormap used in the study
+* turbo.m includes a colormap used in the routine
 
 
 ***
