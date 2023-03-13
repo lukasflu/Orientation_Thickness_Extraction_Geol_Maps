@@ -4,18 +4,19 @@ Routine to automatically extract the orientation and stratigraphic thickness of 
 ***
 PURPOSE:
 
-The "Orientation_Thickness_Extraction_Geol_Maps" routine is designed to automatically extract quantitative geometric informations from geological maps. The routine (A) first automatically extracts the top and base contacts of a specified lithostratigraphic unit. (B) A second script extracts the orientation along these contacts and estimates the stratigraphic thickness of the target unit at a given locality based on the automatically extracted orientation information. (C) Different numeric parameters are proposed to evaluate the reliability of the extracted orientation and thickness model output. An example input data set was added to the repository and helps to test and get used to the presented routine. For more information, see **Nibourel et al. (accepted)**: *add doi here*
+The "Orientation_Thickness_Extraction_Geol_Maps" routine is designed to automatically extract quantitative geometric informations from geological maps. The routine (A) first automatically extracts the top and base contacts of a specified lithostratigraphic unit. (B) A second script extracts the orientation along these contacts and estimates the stratigraphic thickness of the target unit at a given locality based on the automatically extracted orientation information. (C) Different numeric parameters are proposed to evaluate the reliability of the extracted orientation and thickness model output. An example input data set was added to the repository and helps to test and get used to the presented routine. For more information, see **Nibourel et al. (accepted)**: *add doi here*.
 
 ***
 TECHNICAL REQUIREMENTS:
 
-- Matlab (version 2021b): The routine was written and tested in this version.
+- Matlab (version 2021b): The routine was developed and tested in this version.
 
 The routine uses the following third party functions:
 - TIE toolbox (Rauch et al. 2019, [Link to GITHub repository](https://github.com/geoloar/TIE-toolbox/))
-- moment of inertia function (Fernandez, 2005, [Link to Matlab file exchange repository](https://ch.mathworks.com/matlabcentral/fileexchange/46840-inertia-m))
+- Moment of inertia function (Fernandez, 2005, [Link to Matlab file exchange repository](https://ch.mathworks.com/matlabcentral/fileexchange/46840-inertia-m))
+- Turbo Colormap ([Link to Matlab file exchange](https://ch.mathworks.com/matlabcentral/fileexchange/74662-turbo))
 
-References are given below. All necessary new and existing scripts are stored in the subfolder "1_used_functions" of this data repository.
+References are given below. All necessary new and existing functions are stored in the subfolder `1_used_functions` of this repository (see section USED FUNCTIONS below).
 
 ***
 GET STARTED:
@@ -23,31 +24,34 @@ GET STARTED:
 1. Link the folder `*your_rootpath*\Orientation_Thickness_Extraction_Geol_Maps_Repository\1_used_functions` in Home -> Set path -> Add with Subfolder!
 This folder contains all the functions needed by the thickness extraction routine (see section USED FUNCTIONS below)
 
-2. run script `A_INPUT_TIE.m`: -> create/define pathes to input data and output folder, all manual inputs and the input data are defined, loaded and the top and base traces are extracted
+Run the scripts stored in the folder `*your_rootpath*\Orientation_Thickness_Extraction_Geol_Maps_Repository\1_scripts` in the following order:
 
-3. run script `B_ORIENTATION_THICKNESS_EXTRACTION.m`:
+2. `A_INPUT_TIE.m`: -> create/define pathes to input data and output folder, all manual inputs and the input data are defined, loaded and the top and base traces are extracted
+
+3. `B_ORIENTATION_THICKNESS_EXTRACTION.m`:
 -> the orientation and thickness data are extracted and stored in the output folder with associated reliability indicators
 
-4. run script `C_FILTERING.m`
+4. `C_FILTERING.m`
 -> the orientation and thickness data are classified and filtered by using the reliability threshold values specified in the script A.
    Make sure the "Orientation_Thickness_Extraction_Geol_Maps" routine with all its subfolders is registered as a Matlab search path.
 
+5. Run scripts `FIG01_thickness_model_literature_output.m` and other Figure scripts for visualisation and validation of model output.
 
 ***
 INPUT DATA AND REQUIREMENTS:
 
 The geological map vector data must be loaded in a projected coordinate system (typically a national projected system, CH1903+ / LV95, epsg: 2056 in the example data set), where the coordinates are expressed in meters.
 All input data must be loaded with the same projected coordinate system. It is recommended to work on one map sheet at once. This avoids mapsheet boundary effects and saves calculation time. Additionally, the optimal filtering parameters might vary from map sheet to map sheet.
-In the following, all input data are listed, important requirements of the input data specified. The file names reflect the input data of our test data set (see Nibourel, et al., submitted)
+In the following, all input data are listed, important requirements of the input data specified. The file names reflect the input data of our test data set (see Nibourel, et al., submitted).
 
 REQUIRED INPUT DATA FOR ORIENTATION AND THICKNESS EXTRACTION:
 
-1. mapsheet_BED.shp:                      Geological map vector data set, shapefile containing mapped bedrock exposures.
+1. `mapsheet_BED.shp`:                      Geological map vector data set, shapefile containing mapped bedrock exposures.
                                           In the data set, different lithostratigraphic units must be specified as numeric attribute field (see GeolCodes in the example data set)
-2. mapsheet_TEC.shp:                      Shapefile conataining faults and other tectonic boundaries
+2. `mapsheet_TEC.shp`:                      Shapefile conataining faults and other tectonic boundaries
                                           In the data set, faults must be specified with numeric attribute field
-3. mapsheet_swissALTI3D_epsg2056.tif:     Digital elevation model raster data
-4. StratiCH_LiSt_20220614.xls:            Table containing a list of the mapped lithostratigraphic bedrock units
+3. `mapsheet_swissALTI3D_epsg2056.tif`:     Digital elevation model raster data
+4. `StratiCH_LiSt_20220614.xls`:            Table containing a list of the mapped lithostratigraphic bedrock units
                                           These units have to be ordered after stratigraphic age and hierarchy (i.e. Group, Sub-group, Formation, Member)
                                           This list is necessary for the top base definition, the example table was received on the 2022-06-14 by A. Morard (swisstopo)
 
@@ -55,51 +59,14 @@ SUPPLEMENTARY INPUT DATA FOR OUTPUT VALIDATION AND VISUALISATION:
 
 These input data are not required for the routine to run, but are used in the example data set to visualise and validate the model output.
 
-5. HSt_relevant_units_20220617.xls:       Table containing the GeolCodes of the potentially hard rock bearing lithostratigraphic units and eventually mapped sub-units
-                                          This is particularly helpful if a large number of lithostratigraphic units have to be analysed
-6. ParameterSpace.xls:                    Table containing the optimal filtering parameter set for each analysed map sheet
-7. Mapsheetnames_boundaries.xls:          Table containing the mapsheet boundaries of each mapsheet to be analysed
-                                          This is particularly helpful if a large number of map sheets are to be analysed
-8. mapsheet_OM.shp:                       Shapefile containing orientation field measurements (e.g., dip direction/dip of bedding)
+5. `HSt_relevant_units_20220617.xls`:       Table containing the GeolCodes of the potentially hard rock bearing lithostratigraphic units and eventually mapped sub-units
+6. `mapsheet_OM.shp`:                       Shapefile containing orientation field measurements (e.g., dip direction/dip of bedding)
                                           These data points are used to validate the model orientation output and to optimise the reliability assessment.
-9. HSt_thickness_literature_20220601.xls: Layer thickness estimates based on published stratigraphic descriptions or geological cross sections
+7. `HSt_thickness_literature_20220601.xls`: Layer thickness estimates based on published stratigraphic descriptions or geological cross sections
                                           These data points are used to validate the thickness output and to optimise the reliability assessment of the model output.
-10. mapsheet_swissALTI3D_hs_epsg2056.tif: Hillshade derived from digital elevation model raster data. Only used for visualisation
+10. `mapsheet_swissALTI3D_hs_epsg2056.tif`: Hillshade derived from digital elevation model raster data. Only used for visualisation part.
 
 All input data have to be saved in the current Matlab path or have to be registered in a Matlab search path.
-
-***
-USED FUNCTIONS:
-The functions used in the routine are listed below and are stored at:
-*your_rootpath*\Orientation_Thickness_Extraction_Geol_Maps_Repository\1_used_functions\
-
-1_thickness_extr_nibourel2022
-
-This folder contains functions which were developed for the thickness
-extraction routine (these functions are modified TIE functions, 
-Rauch et al., 2019, reference appended below)
-* extractTRACEnew.m
-* loadBedrocknew.m
-* loadTectonew.m
-* visOrientMeasnew.m
-
-2_TIE_functions_rauch2019
-
-Functions from TIE, Rauch et al. (2019), reference appended below
-* GENERALfunctions (TIE, Rauch et al., 2019, reference is appended below)
-* LOADfunctions (TIE)
-* TRACEfunctions (TIE)
-* TRACEvisualize (TIE)
-
-3_moment_of_inertia_fernandez2005
-
-* intertia.m the function from Fernandez (2005) is used for the extraction
-of the orientation information, reference appended below
-
-4_other_existing_matlab_functions
-
-This folder contains other not built-in Matlab functions
-* turbo.m includes a colormap used in the study
 
 ***
 ORGANISATION OF DOCUMENTS:
@@ -116,6 +83,41 @@ The "Orientation_Thickness_Extraction_Geol_Maps" routine contains five folders. 
 	-> contains all functions that are per se independent from the "Orientation_Thickness_Extraction_Geol_Maps" or functions from third party developers (i.e. Fernandez, 2005, Rauch et al., 2019)
 - 2_output_mapsheet
 	-> this folder will contain the model ouptut text files and figures
+
+***
+USED FUNCTIONS:
+
+The functions used in the routine are listed below and are stored at:
+`*your_rootpath*\Orientation_Thickness_Extraction_Geol_Maps_Repository\1_used_functions\`
+
+`1_thickness_extr_nibourel2022`
+
+This folder contains functions which were developed for the thickness
+extraction routine (these functions are modified TIE functions, 
+Rauch et al., 2019, reference appended below)
+* extractTRACEnew.m
+* loadBedrocknew.m
+* loadTectonew.m
+* visOrientMeasnew.m
+
+`2_TIE_functions_rauch2019`
+
+Functions from TIE, Rauch et al. (2019), reference appended below
+* GENERALfunctions (TIE, Rauch et al., 2019, reference is appended below)
+* LOADfunctions (TIE)
+* TRACEfunctions (TIE)
+* TRACEvisualize (TIE)
+
+`3_moment_of_inertia_fernandez2005`
+
+* intertia.m the function from Fernandez (2005) is used for the extraction
+of the orientation information, reference appended below
+
+`4_other_existing_matlab_functions`
+
+This folder contains other not built-in Matlab functions
+* turbo.m includes a colormap used in the study
+
 
 ***
 OUTPUT FILES:
