@@ -20,6 +20,14 @@ References are given below. All necessary new and existing scripts are stored in
 ***
 GET STARTED:
 
+1. run script A_INPUT_TIE.m: -> define pathes to input data and output folder, all manual inputs and the input data are defined, loaded and the top and base traces are extracted
+
+2. run script B_ORIENTATION_THICKNESS_EXTRACTION.m:
+-> the orientation and thickness data are extracted and stored with associated reliability indicators
+
+3. run script C_FILTERING.m
+-> the orientation and thickness data are classified and filtered by using the reliability threshold values specified in the file "ParameterSpace.xls"
+   Make sure the "Orientation_Thickness_Extraction_Geol_Maps" routine with all its subfolders is registered as a Matlab search path.
 
 
 ***
@@ -42,7 +50,7 @@ REQUIRED INPUT DATA FOR ORIENTATION AND THICKNESS EXTRACTION:
 
 SUPPLEMENTARY INPUT DATA FOR OUTPUT VALIDATION AND VISUALISATION:
 
-These input data are not required for the routine to run, but are used in the example data set to visualise and validate the model output. Aditionally, these data sets allow fast processing of multiple map sheets.
+These input data are not required for the routine to run, but are used in the example data set to visualise and validate the model output.
 
 5. HSt_relevant_units_20220617.xls:       Table containing the GeolCodes of the potentially hard rock bearing lithostratigraphic units and eventually mapped sub-units
                                           This is particularly helpful if a large number of lithostratigraphic units have to be analysed
@@ -72,18 +80,6 @@ The "Orientation_Thickness_Extraction_Geol_Maps" routine contains five folders. 
 	-> contains all functions that are per se independent from the "Orientation_Thickness_Extraction_Geol_Maps" or functions from third party developers (i.e. Fernandez, 2005, Rauch et al., 2019)
 - 2_output_mapsheet
 	-> this folder will contain the model ouptut text files and figures
-
-***
-PROCEDURE:
-
-1. run script A_INPUT_TIE.m: -> define pathes to input data and output folder, all manual inputs and the input data are defined, loaded and the top and base traces are extracted
-
-2. run script B_ORIENTATION_THICKNESS_EXTRACTION.m:
--> the orientation and thickness data are extracted and stored with associated reliability indicators
-
-3. run script C_FILTERING.m
--> the orientation and thickness data are classified and filtered by using the reliability threshold values specified in the file "ParameterSpace.xls"
-   Make sure the "Orientation_Thickness_Extraction_Geol_Maps" routine with all its subfolders is registered as a Matlab search path.
 
 ***
 OUTPUT FILES:
