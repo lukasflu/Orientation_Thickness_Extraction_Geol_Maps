@@ -14,7 +14,7 @@ TECHNICAL REQUIREMENTS:
 The routine uses the following third party functions:
 - TIE toolbox (Rauch et al. 2019, [Link to GITHub repository](https://github.com/geoloar/TIE-toolbox/))
 - Moment of inertia function (Fernandez, 2005, [Link to Matlab file exchange repository](https://ch.mathworks.com/matlabcentral/fileexchange/46840-inertia-m))
-- Turbo Colormap ([Link to Matlab file exchange](https://ch.mathworks.com/matlabcentral/fileexchange/74662-turbo))
+- Turbo Colormap ([Link to Matlab file exchange repository](https://ch.mathworks.com/matlabcentral/fileexchange/74662-turbo))
 
 References are given below. All necessary new and existing functions are stored in the subfolder `1_used_functions` of this repository (see section USED FUNCTIONS below).
 
