@@ -4,14 +4,23 @@ Routine to automatically extract the orientation and stratigraphic thickness of 
 ***
 PURPOSE:
 
-The "Orientation_Thickness_Extraction_Geol_Maps" routine is designed to automatically extract quantitative geometric informations from geological maps. The routine (A) first automatically extracts the top and base contacts of a specified lithostratigraphic unit. (B) A second script extracts the orientation along these contacts and estimates the stratigraphic thickness of the target unit at a given locality based on the automatically extracted orientation information. (C) Different numeric parameters are proposed to evaluate the reliability of the extracted orientation and thickness model output. An example input data set was added to the repository and helps to test and get used to the presented routine. For more information, see *** Nibourel et al. (accepted) ***: *add doi here*
+The "Orientation_Thickness_Extraction_Geol_Maps" routine is designed to automatically extract quantitative geometric informations from geological maps. The routine (A) first automatically extracts the top and base contacts of a specified lithostratigraphic unit. (B) A second script extracts the orientation along these contacts and estimates the stratigraphic thickness of the target unit at a given locality based on the automatically extracted orientation information. (C) Different numeric parameters are proposed to evaluate the reliability of the extracted orientation and thickness model output. An example input data set was added to the repository and helps to test and get used to the presented routine. For more information, see **Nibourel et al. (accepted)**: *add doi here*
 
 ***
 TECHNICAL REQUIREMENTS:
 
-The routine was written and tested in Matlab (version 2021b). Therefore, Matlab must be installed to run the scripts.
-The routine uses some third party functions from the TIE toolbox (Rauch et al. 2019) and the moment of inertia function (Fernandez, 2005).
+- Matlab (version 2021b): The routine was written and tested in this version.
+
+The routine uses the following third party functions:
+- TIE toolbox (Rauch et al. 2019, [Link to GITHub repository](https://github.com/geoloar/TIE-toolbox/))
+- moment of inertia function (Fernandez, 2005, [Link to Matlab file exchange repository](https://ch.mathworks.com/matlabcentral/fileexchange/46840-inertia-m))
+
 References are given below. All necessary new and existing scripts are stored in the subfolder "1_used_functions" of this data repository.
+
+***
+GET STARTED:
+
+
 
 ***
 INPUT DATA AND REQUIREMENTS:
