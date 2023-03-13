@@ -4,25 +4,20 @@ Routine to automatically extract the orientation and stratigraphic thickness of 
 ***
 PURPOSE:
 
-The "Orientation_Thickness_Extraction_Geol_Maps" routine is designed to automatically extract quantitative geometric informations from geological maps. The routine (A) first automatically extracts the top and base contacts of a specified lithostratigraphic unit. (B) A second script extracts the orientation along these contacts and estimates the stratigraphic thickness of the target unit at a given locality based on the automatically extracted orientation information. (C) Different numeric parameters are proposed to evaluate the reliability of the extracted orientation and thickness model output. An example input data set was added to the repository and helps to test and get used to the presented routine. For more information, see **Nibourel et al. (2023)**: *add doi here*.
+The "Orientation_Thickness_Extraction_Geol_Maps" routine is designed to automatically extract the orientation (dip direction / dip) and the stratigraphic thickness of a bedrock unit of interest from one, or more, geological vector maps. The routine first (script A) automatically extracts the top and base contacts of a specified lithostratigraphic unit. The second script B extracts the orientation along these contacts and estimates the stratigraphic thickness of the unit at a given locality based on the extracted orientation information. The third script C uses different numeric parameters to evaluate the reliability of the extracted orientation and thickness model output. This repository contains an example input data set to understand and test the routine. For more information and application examples, see **Nibourel et al. (2023)**: *add doi here*.
+
+Key words: geology, thickness, orientation, automated 3d info extraction
 
 ***
 TECHNICAL REQUIREMENTS:
 
-- Matlab (version 2021b): The routine was developed and tested in this version
-
-The routine uses the following third party functions:
-- TIE toolbox (Rauch et al. 2019, [Link to GITHub repository](https://github.com/geoloar/TIE-toolbox/))
-- Moment of inertia function (Fernandez, 2005, [Link to Matlab file exchange repository](https://ch.mathworks.com/matlabcentral/fileexchange/46840-inertia-m))
-- Turbo Colormap ([Link to Matlab file exchange repository](https://ch.mathworks.com/matlabcentral/fileexchange/74662-turbo))
-
-References are given below. All necessary new and existing functions are stored in the subfolder `1_used_functions` of this repository (see section USED FUNCTIONS below).
+- MathWorks MATLAB (Version 2021b): The routine was developed and tested with this version
 
 ***
 GET STARTED:
 
-1. Link the folder `*your_rootpath*\Orientation_Thickness_Extraction_Geol_Maps_Repository\1_used_functions` in Home -> Set path -> Add with Subfolder!
-This folder contains all the functions needed by the thickness extraction routine (see section USED FUNCTIONS below)
+1. In MATLAB, link the folder `*your_rootpath*\Orientation_Thickness_Extraction_Geol_Maps_Repository\1_used_functions` in Home -> Set path -> Add with Subfolder!
+This folder contains all the functions needed by the routine (see section USED FUNCTIONS below)
 
 Run the scripts stored in the folder `*your_rootpath*\Orientation_Thickness_Extraction_Geol_Maps_Repository\1_scripts` in the following order:
 
@@ -38,28 +33,29 @@ Run the scripts stored in the folder `*your_rootpath*\Orientation_Thickness_Extr
 5. Run scripts `FIG01_thickness_model_literature_output.m` and other Figure scripts for visualisation and validation of model output.
 
 ***
-INPUT DATA AND REQUIREMENTS:
+MANDATORY INPUT DATA AND REQUIREMENTS:
 
-The geological map vector data must be loaded in a projected coordinate system (typically a national projected system, CH1903+ / LV95, epsg: 2056 in the example data set), where the coordinates are expressed in meters.
-All input data must be loaded with the same projected coordinate system. It is recommended to work on one map sheet at once. This avoids mapsheet boundary effects and saves calculation time. Additionally, the optimal filtering parameters might vary from map sheet to map sheet.
-In the following, all input data are listed, important requirements of the input data specified. The file names reflect the input data of our test data set (see Nibourel, et al., submitted).
+The geological map vector data is a topologically-correct set of polygons in shapefile format that are projected in a EPSG-recognized Coordinate Reference System (e.g. CH1903+ / LV95, EPSG: 2056 in the example data set), where the coordinates are expressed in meters. 
+The Digital Terrain Model is in raster format (e.g. GeoTIFF), projected in the same Coordinate Reference System as the geological map vector data. 
 
-REQUIRED INPUT DATA FOR ORIENTATION AND THICKNESS EXTRACTION:
+If the project intends to process several geological map sheets, it is recommended to work with one sheet after the other. This avoids map sheet boundary truncation effects and saves calculation time. Additionally, the optimal filtering parameters mightare likely to vary from map sheet to map sheet. 
 
-1. `mapsheet_BED.shp`:                      Geological map vector data set, shapefile containing mapped bedrock exposures.
-                                          In the data set, different lithostratigraphic units must be specified as numeric attribute field (see GeolCodes in the example data set)
-2. `mapsheet_TEC.shp`:                      Shapefile conataining faults and other tectonic boundaries
-                                          In the data set, faults must be specified with numeric attribute field
-3. `mapsheet_swissALTI3D_epsg2056.tif`:     Digital elevation model raster data
-4. `StratiCH_LiSt_20220614.xls`:            Table containing a list of the mapped lithostratigraphic bedrock units
-                                          These units have to be ordered after stratigraphic age and hierarchy (i.e. Group, Sub-group, Formation, Member)
-                                          This list is necessary for the top base definition, the example table was received on the 2022-06-14 by A. Morard (swisstopo)
+In the following, all the mandatory input data are listed and important requirements of the input data are specified. The file names reflect the input data of our test data set (see Nibourel, et al., submitted):
 
-SUPPLEMENTARY INPUT DATA FOR OUTPUT VALIDATION AND VISUALISATION:
+1. `mapsheet_BED.shp`:                      Geological map vector data set, polygon shapefile containing the mapped bedrock exposures.
+                                          In the data set, the different lithostratigraphic units must be expressed as numeric (integer) attributes (see the attribute GeolCodes in the example data set).
+2. `mapsheet_TEC.shp`:                      Line shapefile containing faults and other tectonic boundaries.
+                                          In the data set, faults must be specified with a numeric attribute field.
+3. `mapsheet_swissALTI3D_epsg2056.tif`:     Digital elevation model in raster format.
+4. `StratiCH_LiSt_20220614.xls`:            Table containing the mapped lithostratigraphic bedrock units.
+                                          In order to have a clear top base definition, these units have to be ordered after stratigraphic age and hierarchy (i.e. Group, Sub-group, Formation, Member)
+                                          The example table provided refers to the list obtained from the Lithostratigraphic Lexicon of Switzerland (www.strati.ch), status was June 14th, 2022.
+
+OPTIONAL INPUT DATA:
 
 These input data are not required for the routine to run, but are used in the example data set to visualise and validate the model output.
 
-5. `HSt_relevant_units_20220617.xls`:       Table containing the GeolCodes of the potentially hard rock bearing lithostratigraphic units and eventually mapped sub-units
+5. `HSt_relevant_units_20220617.xls`:       Table containing the "GeolCodes" of the potentially hard rock bearing lithostratigraphic units and eventually mapped sub-units
 6. `mapsheet_OM.shp`:                       Shapefile containing orientation field measurements (e.g., dip direction/dip of bedding)
                                           These data points are used to validate the model orientation output and to optimise the reliability assessment.
 7. `HSt_thickness_literature_20220601.xls`: Layer thickness estimates based on published stratigraphic descriptions or geological cross sections
@@ -69,7 +65,7 @@ These input data are not required for the routine to run, but are used in the ex
 All input data have to be saved in the current Matlab path or have to be registered in a Matlab search path.
 
 ***
-ORGANISATION OF DOCUMENTS:
+STRUCTURE OF THE REPOSITORY:
 
 The "Orientation_Thickness_Extraction_Geol_Maps" routine contains five folders. These are:
 
@@ -80,14 +76,19 @@ The "Orientation_Thickness_Extraction_Geol_Maps" routine contains five folders. 
 - `1_scripts`
 	-> contains the main scripts related to the "Orientation_Thickness_Extraction_Geol_Maps" routine
 - `1_used_functions`
-	-> contains all functions that are per se independent from the "Orientation_Thickness_Extraction_Geol_Maps" or functions from third party developers (i.e. Fernandez, 2005, Rauch et al., 2019)
+	-> contains all functions that are per se independent from the "Orientation_Thickness_Extraction_Geol_Maps" routine or functions from other developers (i.e. Fernandez, 2005, Rauch et al., 2019)
 - `2_output_mapsheet`
 	-> this folder will contain the model ouptut text files and figures
 
 ***
 USED FUNCTIONS:
 
-The functions used in the routine are listed below and are stored at:
+The routine builds on and partly uses the following third party functions (References are given below):
+- TIE toolbox (Rauch et al. 2019, [Link to GITHub repository](https://github.com/geoloar/TIE-toolbox/))
+- Moment of inertia function (Fernandez, 2005, [Link to Matlab file exchange repository](https://ch.mathworks.com/matlabcentral/fileexchange/46840-inertia-m))
+- Turbo Colormap ([Link to Matlab file exchange repository](https://ch.mathworks.com/matlabcentral/fileexchange/74662-turbo))
+
+All necessary new and existing functions are listed below and are stored at:
 `*your_rootpath*\Orientation_Thickness_Extraction_Geol_Maps_Repository\1_used_functions\`
 
 `1_thickness_extr_nibourel2022`
@@ -123,9 +124,11 @@ This folder contains other not built-in Matlab functions
 OUTPUT FILES:
 
 The routine produces 4 output textfiles and optionally 10 figures.
-The output text files are optimised to facilitate the data export to standard GIS applications.
-The figures are optimised to enable a rapid output validation and to allow editability in AdobeIllustrator.
-All output files and their structure are listed below:
+In the output text files, the thickness values and reliability parameters are stored together with separate X Y Z values to facilitate the data import into standard GIS applications.
+The figures are optimised to enable a rapid output validation and can be exported to svg format to allow editability in the most commonly used graphics software.
+All output files and their structure are listed below.
+
+Text files (points):
 
 1. `output_orientation_unfiltered.txt`: main output file generated at the end of B_ORIENTATION_THICKNESS_EXTRACTION 
 	- column 1: 'X', x coordinate of orientation information = center coordinate of moving window
@@ -162,12 +165,12 @@ All output files and their structure are listed below:
 4. `output_thickness_filtered.txt`: filtered output file generated at the end of C_FILTERING
 	- selection of reliability assessed and filtered thickness outputs, same structure as output_thickness_unfiltered.txt
 
-FIGURES:
+Figures:
 
 - Figure 1:     All in one figure including DEM (hillshade), geological map, extracted orientation data and reliability assessed thickness point data
 - Figure 2:     3D Plot showing extracted top and base horizons
 - Figure 3:     Background map, DEM, geological map with target unit (Figure 3 is a raster format output, even when exported as .svg)
-- Figure 4:     Model output, layer orientation and thickness estimates for target layer (Figure 4 does not contain any raster data, all vectors can be edited, very useful for production of final figures, uncomment export_fig function to enhance editability in Ai) -> combine Figures 3 and 4!
+- Figure 4:     Model output, layer orientation and thickness estimates for target layer (Figure 4 does not contain any raster data, all vector data can be edited, very useful for production of final figures, uncomment ´export_fig´ function (lines 174-176) to enhance editability in graphics software) -> combine Figures 3 and 4!
 - Figure 5:     Figure including the orientation reliability indicator M
 - Figure 6:     Figure including the orientation reliability indicator K
 - Figure 7:     Figure including the thickness reliability indicator delta
@@ -184,11 +187,11 @@ The data are presented and discussed in detail in Nibourel et al. (submitted): *
 ***
 CITATION:
 
-A detailed documentation of the approach can be found in Nibourel et al. (2023), see below:
+A detailed documentation of the approach and a potential application test case for the mining sector can be found in Nibourel et al. (2023), see below:
 
 **Nibourel L., Morgenthaler J., Grazioli S., Schumacher I., Schlaefli S., Galfetti T., Heuberger S., 2023. Automated extraction of orientation and stratigraphic thickness from geological maps. Journal of Structural Geology, ???, ???-???, doi: ???**
 
-Please, cite this paper if you apply the "Orientation_Thickness_Extraction_Geol_Maps". 
+Please, cite this publication if you apply the "Orientation_Thickness_Extraction_Geol_Maps" routine. 
 
 ***
 REFERENCES:
@@ -197,7 +200,7 @@ Rauch et al., 2019. Trace Information Extraction (TIE): A new approach to extrac
  
 Fernandez, 2005. Obtaining a best fitting plane through 3D georeferenced data. Journal of Structural Geology, 125, 268-300, doi: 10.1016/j.jsg.2004.12.004
 
-The following example data sets are available at www.swisstopo.ch:
+The following data are used as an example and are available at www.swisstopo.ch:
 
 - the 1:25'000 GeoCover geological vector data set of Switzerland, including the bedrock data, the faults and the orientation measurements
 - the digital elevation model swissALTI3D
@@ -205,4 +208,6 @@ The following example data sets are available at www.swisstopo.ch:
 ***
 CONTACT:
 
-Lukas Nibourel // ETH Zurich // lukas.nibourel@erdw.ethz.ch
+Lukas Nibourel // Georesources Switzerland Group //  ETH Zurich // lukas.nibourel@erdw.ethz.ch
+
+https://georessourcen.ethz.ch/en/#georesources-switzerland
