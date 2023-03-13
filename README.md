@@ -20,13 +20,16 @@ References are given below. All necessary new and existing scripts are stored in
 ***
 GET STARTED:
 
-1. run script A_INPUT_TIE.m: -> define pathes to input data and output folder, all manual inputs and the input data are defined, loaded and the top and base traces are extracted
+1. Link the folder `*your_rootpath*\Orientation_Thickness_Extraction_Geol_Maps_Repository\1_used_functions` in Home -> Set path -> Add with Subfolder!
+This folder contains all the functions needed by the thickness extraction routine (see section USED FUNCTIONS below)
 
-2. run script B_ORIENTATION_THICKNESS_EXTRACTION.m:
--> the orientation and thickness data are extracted and stored with associated reliability indicators
+2. run script `A_INPUT_TIE.m`: -> create/define pathes to input data and output folder, all manual inputs and the input data are defined, loaded and the top and base traces are extracted
 
-3. run script C_FILTERING.m
--> the orientation and thickness data are classified and filtered by using the reliability threshold values specified in the file "ParameterSpace.xls"
+3. run script `B_ORIENTATION_THICKNESS_EXTRACTION.m`:
+-> the orientation and thickness data are extracted and stored in the output folder with associated reliability indicators
+
+4. run script `C_FILTERING.m`
+-> the orientation and thickness data are classified and filtered by using the reliability threshold values specified in the script A.
    Make sure the "Orientation_Thickness_Extraction_Geol_Maps" routine with all its subfolders is registered as a Matlab search path.
 
 
@@ -64,6 +67,39 @@ These input data are not required for the routine to run, but are used in the ex
 10. mapsheet_swissALTI3D_hs_epsg2056.tif: Hillshade derived from digital elevation model raster data. Only used for visualisation
 
 All input data have to be saved in the current Matlab path or have to be registered in a Matlab search path.
+
+***
+USED FUNCTIONS:
+The functions used in the routine are listed below and are stored at:
+*your_rootpath*\Orientation_Thickness_Extraction_Geol_Maps_Repository\1_used_functions\
+
+1_thickness_extr_nibourel2022
+
+This folder contains functions which were developed for the thickness
+extraction routine (these functions are modified TIE functions, 
+Rauch et al., 2019, reference appended below)
+* extractTRACEnew.m
+* loadBedrocknew.m
+* loadTectonew.m
+* visOrientMeasnew.m
+
+2_TIE_functions_rauch2019
+
+Functions from TIE, Rauch et al. (2019), reference appended below
+* GENERALfunctions (TIE, Rauch et al., 2019, reference is appended below)
+* LOADfunctions (TIE)
+* TRACEfunctions (TIE)
+* TRACEvisualize (TIE)
+
+3_moment_of_inertia_fernandez2005
+
+* intertia.m the function from Fernandez (2005) is used for the extraction
+of the orientation information, reference appended below
+
+4_other_existing_matlab_functions
+
+This folder contains other not built-in Matlab functions
+* turbo.m includes a colormap used in the study
 
 ***
 ORGANISATION OF DOCUMENTS:
