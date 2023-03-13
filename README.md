@@ -9,7 +9,7 @@ The "Orientation_Thickness_Extraction_Geol_Maps" routine is designed to automati
 ***
 TECHNICAL REQUIREMENTS:
 
-- Matlab (version 2021b): The routine was developed and tested in this version.
+- Matlab (version 2021b): The routine was developed and tested in this version
 
 The routine uses the following third party functions:
 - TIE toolbox (Rauch et al. 2019, [Link to GITHub repository](https://github.com/geoloar/TIE-toolbox/))
@@ -73,15 +73,15 @@ ORGANISATION OF DOCUMENTS:
 
 The "Orientation_Thickness_Extraction_Geol_Maps" routine contains five folders. These are:
 
-- 0_input_global
+- `0_input_global`
 	-> contains all input data that are not specific to a map sheet (i.e. stratigraphic list/hierarchy of mapped bedrock units)
-- 0_input_mapsheet
+- `0_input_mapsheet`
 	-> contains all input data that are specific to a given map sheet / area (i.e., bedrock, tectonic lines input, DEM)
-- 1_scripts
+- `1_scripts`
 	-> contains the main scripts related to the "Orientation_Thickness_Extraction_Geol_Maps" routine
-- 1_used_functions
+- `1_used_functions`
 	-> contains all functions that are per se independent from the "Orientation_Thickness_Extraction_Geol_Maps" or functions from third party developers (i.e. Fernandez, 2005, Rauch et al., 2019)
-- 2_output_mapsheet
+- `2_output_mapsheet`
 	-> this folder will contain the model ouptut text files and figures
 
 ***
@@ -127,7 +127,7 @@ The output text files are optimised to facilitate the data export to standard GI
 The figures are optimised to enable a rapid output validation and to allow editability in AdobeIllustrator.
 All output files and their structure are listed below:
 
-1. output_orientation_unfiltered.txt: main output file generated at the end of B_ORIENTATION_THICKNESS_EXTRACTION 
+1. `output_orientation_unfiltered.txt`: main output file generated at the end of B_ORIENTATION_THICKNESS_EXTRACTION 
 	- column 1: 'X', x coordinate of orientation information = center coordinate of moving window
 	- column 2: 'Y', y coordinate of orientation information = center coordinate of moving window
 	- column 3: 'Z', z coordinate of orientation information = center coordinate of moving window
@@ -141,7 +141,7 @@ All output files and their structure are listed below:
 	- column 11: 'T', index number of analysed trace
 	- column 12: 'n(T)', length of the analysed trace (number of points considered, not in meters)
 
-2. output_thickness_unfiltered.txt: main output file generated at the end of B_ORIENTATION_THICKNESS_EXTRACTION
+2. `output_thickness_unfiltered.txt`: main output file generated at the end of B_ORIENTATION_THICKNESS_EXTRACTION
 	- column 1: 'X', x coordinate of central thickness point = center of thickness vector D or D'
 	- column 2: 'Y', y coordinate of central thickness point = center of thickness vector D or D'
 	- column 3: 'Z', z coordinate of central thickness point = center of thickness vector D or D'
@@ -156,10 +156,10 @@ All output files and their structure are listed below:
 	- column 12: 'T2', index number of nearest neighbor trace
 	- column 13: 'GeolCode', geol. unit at the center position of vectors D or D' (see also X,Y)
 
-3. output_orientation_filtered.txt: filtered output file generated at the end of C_FILTERING
+3. `output_orientation_filtered.txt`: filtered output file generated at the end of C_FILTERING
 	- selection of reliability assessed and filtered orientation outputs, same structure as output_orientation_unfiltered.txt
 
-4. output_thickness_filtered.txt: filtered output file generated at the end of C_FILTERING
+4. `output_thickness_filtered.txt`: filtered output file generated at the end of C_FILTERING
 	- selection of reliability assessed and filtered thickness outputs, same structure as output_thickness_unfiltered.txt
 
 FIGURES:
