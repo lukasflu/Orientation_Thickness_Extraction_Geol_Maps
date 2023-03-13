@@ -56,7 +56,7 @@ OPTIONAL INPUT DATA:
 These input data are not required for the routine to run, but are used in the example data set to visualise and validate the model output.
 
 5. `HSt_relevant_units_20220617.xls`:       Table containing the "GeolCodes" of the potentially hard rock bearing lithostratigraphic units and eventually mapped sub-units
-6. `mapsheet_OM.shp`:                       Shapefile containing orientation field measurements (e.g., dip direction/dip of bedding)
+6. `mapsheet_OM.shp`:                       Shapefile containing orientation field orientation measurements (e.g., dip direction/dip of bedding)
                                           These data points are used to validate the model orientation output and to optimise the reliability assessment.
 7. `HSt_thickness_literature_20220601.xls`: Layer thickness estimates based on published stratigraphic descriptions or geological cross sections
                                           These data points are used to validate the thickness output and to optimise the reliability assessment of the model output.
