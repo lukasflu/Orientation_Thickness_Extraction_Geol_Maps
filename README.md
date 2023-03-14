@@ -210,4 +210,4 @@ CONTACT:
 
 Lukas Nibourel // Georesources Switzerland Group //  ETH Zurich // lukas.nibourel@erdw.ethz.ch
 
-https://georessourcen.ethz.ch/en/#georesources-switzerland
+https://georessourcen.ethz.ch/
