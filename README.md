@@ -182,7 +182,7 @@ Figures:
 EXAMPLE:
 
 The example data are already set as initial data set in the script "A_INPUT_TIE". If you wish to run your own data, change the INPUT data in "A_INPUT_TIE".
-The data are presented and discussed in detail in Nibourel et al. (submitted): *add doi here*
+The data are presented and discussed in detail in Nibourel et al. (2023): https://doi.org/10.1016/j.jsg.2023.104865
 
 ***
 CITATION:
