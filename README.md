@@ -4,7 +4,7 @@ Routine to automatically extract the orientation and stratigraphic thickness of 
 ***
 PURPOSE:
 
-The "Orientation_Thickness_Extraction_Geol_Maps" routine is designed to automatically extract the orientation (dip direction / dip) and the stratigraphic thickness of a bedrock unit of interest from one, or more, geological vector maps. The routine first (script A) automatically extracts the top and base contacts of a specified lithostratigraphic unit. The second script B extracts the orientation along these contacts and estimates the stratigraphic thickness of the unit at a given locality based on the extracted orientation information. The third script C uses different numeric parameters to evaluate the reliability of the extracted orientation and thickness model output. This repository contains an example input data set to understand and test the routine. For more information and application examples, see **Nibourel et al. (2023)**: *add doi here*.
+The "Orientation_Thickness_Extraction_Geol_Maps" routine is designed to automatically extract the orientation (dip direction / dip) and the stratigraphic thickness of a bedrock unit of interest from one, or more, geological vector maps. The routine first (script A) automatically extracts the top and base contacts of a specified lithostratigraphic unit. The second script B extracts the orientation along these contacts and estimates the stratigraphic thickness of the unit at a given locality based on the extracted orientation information. The third script C uses different numeric parameters to evaluate the reliability of the extracted orientation and thickness model output. This repository contains an example input data set to understand and test the routine. For more information and application examples, see **Nibourel et al. (2023)**: https://doi.org/10.1016/j.jsg.2023.104865.
 
 Key words: geology, thickness, orientation, automated 3d info extraction
 
@@ -189,7 +189,7 @@ CITATION:
 
 A detailed documentation of the approach and a potential application test case for the mining sector can be found in Nibourel et al. (2023), see below:
 
-**Nibourel L., Morgenthaler J., Grazioli S., Schumacher I., Schlaefli S., Galfetti T., Heuberger S., 2023. Automated extraction of orientation and stratigraphic thickness from geological maps. Journal of Structural Geology, ???, ???-???, doi: ???**
+**Nibourel, L., Morgenthaler, J., Grazioli, S., Schumacher, I., Schläfli, S., Galfetti, T., & Heuberger, S. (2023). Automated extraction of orientation and stratigraphic thickness from geological maps. Journal of Structural Geology, 104865, doi: 10.1016/j.jsg.2023.104865**
 
 Please, cite this publication if you apply the "Orientation_Thickness_Extraction_Geol_Maps" routine. 
 
